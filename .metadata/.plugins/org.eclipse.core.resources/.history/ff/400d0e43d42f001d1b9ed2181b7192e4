@@ -1,0 +1,48 @@
+package com.alura.jdbc.controller;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ProductoController {
+
+	public void modificar(String nombre, String descripcion, Integer id) {
+		// TODO
+	}
+
+	public void eliminar(Integer id) {
+		// TODO
+	}
+
+	public List<?> listar() throws SQLException {
+		Connection con = DriverManager.getConnection(
+				"jdbc:mysql://localhost/control_de_stock?useTimeZone=true&serverTimeZone=UTC",
+                "root",
+                "root1234");
+		
+		Statement statement  = con.createStatement();
+		
+		boolean result = statement.execute("SELECT ID, NOMBRE, CANTIDAD FROM PRODUCTO");
+		
+		ResultSet resultSet = statement.getResultSet();
+		
+		while(resultSet.next()) {
+			
+		}
+		
+		
+		System.out.println("Cerrando la conexión");
+	    con.close();
+	        
+		return new ArrayList<>();
+	}
+
+    public void guardar(Object producto) {
+		// TODO
+	}
+
+}
